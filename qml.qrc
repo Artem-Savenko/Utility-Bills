@@ -1,0 +1,26 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>PopupEditDelete.qml</file>
+        <file>DialogNameEdit.qml</file>
+        <file>DelegateTableItem.qml</file>
+        <file>Style.qml</file>
+        <file>TextStretchable.qml</file>
+        <file>TextFieldDelegate.qml</file>
+        <file>MonthPicker.qml</file>
+        <file>DialogAreYouSure.qml</file>
+        <file>ButtonSmall.qml</file>
+        <file>DialogDetailedPrice.qml</file>
+        <file>totalCost.png</file>
+        <file>PageTotal.qml</file>
+        <file>closeIcon.png</file>
+        <file>TotalCostItem.qml</file>
+        <file>clearIcon.png</file>
+        <file>save.png</file>
+        <file>ImageButton.qml</file>
+        <file>res/img/redo.png</file>
+        <file>res/img/redoDisabled.png</file>
+        <file>res/img/undo.png</file>
+        <file>res/img/undoDisabled.png</file>
+    </qresource>
+</RCC>

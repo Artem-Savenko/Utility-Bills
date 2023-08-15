@@ -1,0 +1,12 @@
+﻿Created: 
+Release v1.1.0: 
+	release date:
+	
+	added:
+- saving last size and position of the window
+
+	removed:
+	
+	fixed:
+	
+	improved:

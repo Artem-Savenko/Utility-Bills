@@ -1,0 +1,8 @@
+﻿Created: 
+Release v1.0.0: 
+	release date:
+	
+	added:
+	removed:
+	fixed:
+	improved:
