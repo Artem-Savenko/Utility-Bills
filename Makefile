@@ -222,6 +222,7 @@ Makefile: utillityBills_Ver3.pro C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\wi
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\features\qt_config.prf \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\win32-msvc\qmake.conf \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\features\spec_post.prf \
+		.qmake.stash \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\features\exclusive_builds.prf \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\common\msvc-version.conf \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\features\toolchain.prf \
@@ -396,6 +397,7 @@ C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\features\qt_functions.prf:
 C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\features\qt_config.prf:
 C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\win32-msvc\qmake.conf:
 C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\features\spec_post.prf:
+.qmake.stash:
 C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\features\exclusive_builds.prf:
 C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\common\msvc-version.conf:
 C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\features\toolchain.prf:
