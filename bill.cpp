@@ -1,5 +1,4 @@
 #include "bill.h"
-//#include <QDebug>  // debug only
 
 QStringList Bill::mHeaderNames = { "Month", "Beginning of the month",
                                  "End of the month", "Price", "Total (units)",
