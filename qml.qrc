@@ -18,9 +18,5 @@
         <file>clearIcon.png</file>
         <file>save.png</file>
         <file>ImageButton.qml</file>
-        <file>res/img/redo.png</file>
-        <file>res/img/redoDisabled.png</file>
-        <file>res/img/undo.png</file>
-        <file>res/img/undoDisabled.png</file>
     </qresource>
 </RCC>

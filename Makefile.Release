@@ -197,11 +197,7 @@ release\qrc_qml.cpp: qml.qrc \
 		save.png \
 		main.qml \
 		ButtonSmall.qml \
-		TextFieldDelegate.qml \
-		res\img\undo.png \
-		res\img\redo.png \
-		res\img\undoDisabled.png \
-		res\img\redoDisabled.png
+		TextFieldDelegate.qml
 	C:\my\Qt\5.12.12\5.12.12\msvc2017_64\bin\rcc.exe -name qml qml.qrc -o release\qrc_qml.cpp
 
 compiler_moc_predefs_make_all: release\moc_predefs.h
