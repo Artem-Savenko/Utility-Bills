@@ -14,8 +14,6 @@ struct SummaryItem {
     QString price;
     int totalUnits;
     float totalCost;
-
-    bool isPayment;
 };
 
 class ModelSummary: public QAbstractTableModel
@@ -33,7 +31,7 @@ public:
     Q_INVOKABLE int monthNumber(const int &row) const;
     Q_INVOKABLE QString totalCost() const;
     Q_INVOKABLE void deleteAt(const int &row);
-    Q_INVOKABLE void add(const int &row, const bool &isPayment);
+    Q_INVOKABLE void add(const int &row);
     Q_INVOKABLE void clearModel();
     virtual int rowCount(const QModelIndex &parent) const override;
     virtual int columnCount(const QModelIndex &parent) const override;

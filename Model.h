@@ -11,23 +11,12 @@
 class Model : public QAbstractTableModel
 {
 Q_OBJECT
-    struct UndoRedoItem {
-        enum Type { Edited, Deleted, Added, AllItemsCleared };
-
-        Bill month;
-        Type editType; // was it deleted/edited/added?
-    };
-
     std::vector <Bill> mData;
-    std::vector <UndoRedoItem> mUndoBuffer;
-    std::vector <UndoRedoItem> mRedoBuffer;
 
     int modelCount() const; // just to ignore warnings
     void clearModel();
         // (PASS DIRTY NAMES)
     void saveData(const QString &address, const QString &billType);
-    void addUndo(const Bill &month, UndoRedoItem::Type actionType);
-    void addRedo(const UndoRedoItem &undoItem);
 
 protected:
     enum AvtemRoleColumns {
@@ -66,9 +55,6 @@ public:
     virtual QVariant data(const QModelIndex &index, int role) const override;    
     virtual QHash<int, QByteArray> roleNames() const override;    
     virtual QVariant headerData(int section, Qt::Orientation orientation, int role) const override;
-
-signals:
-    void undoRedoBufferChanged() const;
 };
 
 

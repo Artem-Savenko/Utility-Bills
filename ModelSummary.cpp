@@ -38,7 +38,7 @@ void ModelSummary::deleteAt(const int &row)
     emit totalCostChanged();
 }
 
-void ModelSummary::add(const int &row, const bool &isPayment)
+void ModelSummary::add(const int &row)
 {
     if(row < 0)
         return;
@@ -46,14 +46,8 @@ void ModelSummary::add(const int &row, const bool &isPayment)
     emit beginInsertRows(QModelIndex(), modelCount(), modelCount());
     Bill modelItem = Common::mModel->getAt(row);
     SummaryItem item;
-    if(isPayment)
        item = {Common::currBillType(), modelItem.month(),
-         "-", 0, float(modelItem.beginOfMonth())
-              , isPayment};
-    else
-       item = {Common::currBillType(), modelItem.month(),
-         modelItem.priceStr(), modelItem.totalUnits(), modelItem.totalCost()
-              , isPayment};
+         modelItem.priceStr(), modelItem.totalUnits(), modelItem.totalCost()};
 
     mData.push_back(item);
     emit endInsertRows();
@@ -103,11 +97,8 @@ QVariant ModelSummary::data(const QModelIndex &index, int role) const
                 "#fadb14", "#d4b106", "#ad8b00",   // summer
                 "#faad14", "#d48806", "#ad6800",   // fall
                 "#13c2c2" };          // winter
-    QString paymentMonthColor = "white";
 
     if(role == Qt::DecorationRole) { // colors of the TableView
-        if(mData.at(row).isPayment)
-            return paymentMonthColor;
         return colors[monthNumber(int(row))];
     }
 
@@ -117,12 +108,8 @@ QVariant ModelSummary::data(const QModelIndex &index, int role) const
     case 1:
         return mData.at(row).month;
     case 2:
-        if(mData.at(row).isPayment)
-            return "";
         return mData.at(row).price;
     case 3:
-        if(mData.at(row).isPayment)
-            return "";
         return mData.at(row).totalUnits;
     case 4:
         return QString::number(static_cast<double>(mData.at(row).totalCost),

@@ -43,7 +43,6 @@ void Model::addNew()
     emit beginInsertRows(QModelIndex(), 0, 0);
     mData.insert(mData.begin(), Bill());
     emit endInsertRows();
-//    addUndoRedo(mData.back(), UndoRedoItem::Type::Added);
 
     saveData(Common::currAddress(), Common::currBillType());
 }
@@ -64,8 +63,6 @@ void Model::loadData(const QString &address, const QString &billType)
 // PASS DIRTY NAMES
 {
     clearModel();
-    mUndoBuffer.clear(); // new bill type is loading. Wipe all data
-    emit undoRedoBufferChanged();
 
     QString dirPath = Common::getAppDir() + '/'+ Common::delNonPathChars(address)
             + '/' + Common::delNonPathChars(billType);
@@ -133,24 +130,6 @@ void Model::saveData(const QString &address, const QString &billType)
 
     file.close();
 }
-
-void Model::addUndo(const Bill &month, Model::UndoRedoItem::Type actionType)
-{
-    // prevent groving undo/redo vector
-    if(mUndoBuffer.size() > 70
-       && actionType != Model::UndoRedoItem::AllItemsCleared)
-        mUndoBuffer.erase(mUndoBuffer.begin());
-
-    mUndoBuffer.push_back(UndoRedoItem{month, actionType});
-    emit undoRedoBufferChanged();
-}
-
-void Model::addRedo(const UndoRedoItem &undoItem)
-{
-    mRedoBuffer.push_back(undoItem);
-    emit undoRedoBufferChanged();
-}
-
 
 int Model::rowCount(const QModelIndex &parent) const
 {

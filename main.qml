@@ -242,7 +242,7 @@ ApplicationWindow {
 
         Repeater {
             id: headersRepeater
-            model: cboxIsPayment.checked ? 2 : 6
+            model: 6
             anchors.fill: parent
 
             delegate: Rectangle {
@@ -293,75 +293,9 @@ ApplicationWindow {
         onFontInfoChanged: { Style.headersPointSize = fontInfo.pointSize }
     }
 
-    Row {
-        id: rowUndoRedoStuff
-        anchors.top: tvHeaders.bottom
-        anchors.margins: tvHeaders.height *0.2
-        anchors.left: tvHeaders.left
-        width: mainWnd.width - x
-        height: mainWnd.height *0.04
-
-        spacing: btnUndo.height /2
-
-        ImageButton {
-            id: btnUndo
-            anchors.verticalCenter: parent.verticalCenter
-            width: parent.height
-            height: parent.height
-            source: enabled ? "qrc:/res/img/undo.png"
-                            : "qrc:/res/img/undoDisabled.png"
-            toolTipText: "Undo"
-        }
-        ImageButton {
-            id: btnRedo
-            anchors.verticalCenter: parent.verticalCenter
-            width: parent.height
-            height: parent.height
-            source: enabled ? "qrc:/res/img/redo.png"
-                            : "qrc:/res/img/redoDisabled.png"
-            toolTipText: "Redo"
-        }
-
-        CheckBox {
-            id: cboxIsPayment
-            anchors.verticalCenter: parent.verticalCenter
-            height: parent.height
-
-            indicator.height: parent.height *0.7
-            indicator.width: indicator.height
-
-            text: "<font color=\"white\">Payment mode</font>" // fixme
-
-            MouseArea {
-                id: cboxIsPaymentMouseArea
-                anchors.fill: parent
-                hoverEnabled: true
-                cursorShape: Qt.PointingHandCursor  // todo make your own cbox
-                ToolTip.text: { return "Use it when you want to show payments."
-                  + "\nIt will be displayed differently in the \"Summary\" window."
-                }
-                ToolTip.visible: containsMouse
-
-                onClicked: dialAreYouSureIsPayment.visible = true
-           }
-           DialogAreYouSure {
-               id: dialAreYouSureIsPayment
-               textWarning: {
-                   return "All data in current bill type will be LOST"
-                   + "\nProceed?"
-               }
-               onYes: {
-                   cboxIsPayment.checked = !cboxIsPayment.checked
-                   console.log("approved")
-               }
-           }
-
-        }
-    }
-
     TableView {
         id: tvData
-        anchors.top: rowUndoRedoStuff.bottom
+        anchors.top: tvHeaders.bottom
         anchors.bottom: parent.bottom
         anchors.left: parent.left
         anchors.right: parent.right
@@ -407,9 +341,6 @@ ApplicationWindow {
             id: delegateData
             property color col: model.decorationRole
             color:  {
-                if(cboxIsPayment.checked)
-                    return "gainsBoro"
-
                 switch(column) {
                    case 0:
                        return col
@@ -519,8 +450,8 @@ ApplicationWindow {
             btnEditText: "Add to summary"
             btnDeleteEnabled: true
             onDeleteClicked: dialAreYouSureModel.open()
-            onEditClicked: ModelSummary.add(deletingIndexRow, // it's ADDiNG!
-                             cboxIsPayment.checked)
+            onEditClicked: ModelSummary.add(deletingIndexRow) // it's ADDiNG!
+
         }
         DialogAreYouSure {
             id: dialAreYouSureModel
