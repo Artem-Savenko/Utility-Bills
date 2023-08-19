@@ -33,7 +33,7 @@ Page {
         width: parent.width *0.05
         height: width
 
-        source: "qrc:/closeIcon.png"
+        source: "qrc:/img/closeIcon.png"
         mipmap: true
 
         MouseArea {

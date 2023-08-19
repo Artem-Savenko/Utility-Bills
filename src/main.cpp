@@ -28,13 +28,13 @@ int main(int argc, char *argv[])
     Common::loadEverything();
 
     qmlRegisterSingletonType <Common> ("Common", 1,0, "Common", Common::singletonProvider);
-    qmlRegisterSingletonType(QUrl("qrc:/Style.qml"), "Style", 1,0, "Style");
+    qmlRegisterSingletonType(QUrl("qrc:/qml/Style.qml"), "Style", 1,0, "Style");
     engine.rootContext()->setContextProperty("CmboxModel", cmboxModel.data());
     engine.rootContext()->setContextProperty("ModelSummary", modelSummary.data());
     engine.rootContext()->setContextProperty("BillTypesModel", billTypesModel.data());
     engine.rootContext()->setContextProperty("Model", dataModel.data());
 
-    engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
+    engine.load(QUrl::fromLocalFile("qml/main.qml"));
     if (engine.rootObjects().isEmpty())
         return -1;
 

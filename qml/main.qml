@@ -129,7 +129,7 @@ ApplicationWindow {
         width: rowAddresses.width *0.05
         height: width
 
-        source: "qrc:/totalCost.png"
+        source: "qrc:/img/totalCost.png"
         mipmap: true
         MouseArea {
             anchors.fill: parent
@@ -624,7 +624,7 @@ ApplicationWindow {
             anchors.top: tvSummary.bottom
             anchors.topMargin: tvSummary.anchors.leftMargin
 
-            source: "qrc:/save.png"
+            source: "qrc:/img/save.png"
             MouseArea {
                 anchors.fill: parent
                 cursorShape: Qt.PointingHandCursor
@@ -639,7 +639,7 @@ ApplicationWindow {
             anchors.leftMargin: width *0.5
             anchors.top: btnSaveAs.top
 
-            source: "qrc:/clearIcon.png"
+            source: "qrc:/img/clearIcon.png"
             MouseArea {
                 anchors.fill: parent
                 cursorShape: Qt.PointingHandCursor

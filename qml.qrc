@@ -1,22 +1,24 @@
 <RCC>
     <qresource prefix="/">
-        <file>main.qml</file>
-        <file>PopupEditDelete.qml</file>
-        <file>DialogNameEdit.qml</file>
-        <file>DelegateTableItem.qml</file>
-        <file>Style.qml</file>
-        <file>TextStretchable.qml</file>
-        <file>TextFieldDelegate.qml</file>
-        <file>MonthPicker.qml</file>
-        <file>DialogAreYouSure.qml</file>
-        <file>ButtonSmall.qml</file>
-        <file>DialogDetailedPrice.qml</file>
-        <file>totalCost.png</file>
-        <file>PageTotal.qml</file>
-        <file>closeIcon.png</file>
-        <file>TotalCostItem.qml</file>
-        <file>clearIcon.png</file>
-        <file>save.png</file>
-        <file>ImageButton.qml</file>
+        <file>img/appIcon.png</file>
+        <file>img/clearIcon.png</file>
+        <file>img/closeIcon.png</file>
+        <file>img/monthColors.png</file>
+        <file>img/save.png</file>
+        <file>img/totalCost.png</file>
+        <file>qml/ButtonSmall.qml</file>
+        <file>qml/DelegateTableItem.qml</file>
+        <file>qml/DialogAreYouSure.qml</file>
+        <file>qml/DialogDetailedPrice.qml</file>
+        <file>qml/DialogNameEdit.qml</file>
+        <file>qml/ImageButton.qml</file>
+        <file>qml/main.qml</file>
+        <file>qml/MonthPicker.qml</file>
+        <file>qml/PageTotal.qml</file>
+        <file>qml/PopupEditDelete.qml</file>
+        <file>qml/TextFieldDelegate.qml</file>
+        <file>qml/TextStretchable.qml</file>
+        <file>qml/TotalCostItem.qml</file>
+        <file>qml/Style.qml</file>
     </qresource>
 </RCC>

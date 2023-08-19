@@ -47,13 +47,13 @@ OBJECTS_DIR   = release
 
 ####### Files
 
-SOURCES       = main.cpp \
-		Model.cpp \
-		Common.cpp \
-		CmboxModel.cpp \
-		BillTypesModel.cpp \
-		ModelSummary.cpp \
-		bill.cpp release\qrc_qml.cpp \
+SOURCES       = src\main.cpp \
+		src\Model.cpp \
+		src\Common.cpp \
+		src\CmboxModel.cpp \
+		src\BillTypesModel.cpp \
+		src\ModelSummary.cpp \
+		src\bill.cpp release\qrc_qml.cpp \
 		release\moc_Model.cpp \
 		release\moc_Common.cpp \
 		release\moc_CmboxModel.cpp \
@@ -73,18 +73,18 @@ OBJECTS       = release\main.obj \
 		release\moc_BillTypesModel.obj \
 		release\moc_ModelSummary.obj
 
-DIST          =  Model.h \
-		Common.h \
-		CmboxModel.h \
-		BillTypesModel.h \
-		ModelSummary.h \
-		bill.h main.cpp \
-		Model.cpp \
-		Common.cpp \
-		CmboxModel.cpp \
-		BillTypesModel.cpp \
-		ModelSummary.cpp \
-		bill.cpp
+DIST          =  src\Model.h \
+		src\Common.h \
+		src\CmboxModel.h \
+		src\BillTypesModel.h \
+		src\ModelSummary.h \
+		src\bill.h src\main.cpp \
+		src\Model.cpp \
+		src\Common.cpp \
+		src\CmboxModel.cpp \
+		src\BillTypesModel.cpp \
+		src\ModelSummary.cpp \
+		src\bill.cpp
 QMAKE_TARGET  = utillityBills_Ver3
 DESTDIR        = release\ #avoid trailing-slash linebreak
 TARGET         = utillityBills_Ver3.exe
@@ -93,6 +93,26 @@ DESTDIR_TARGET = release\utillityBills_Ver3.exe
 ####### Implicit rules
 
 .SUFFIXES: .c .cpp .cc .cxx
+
+{src}.cpp{release\}.obj::
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -Forelease\ @<<
+	$<
+<<
+
+{src}.cc{release\}.obj::
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -Forelease\ @<<
+	$<
+<<
+
+{src}.cxx{release\}.obj::
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -Forelease\ @<<
+	$<
+<<
+
+{src}.c{release\}.obj::
+	$(CC) -c $(CFLAGS) $(INCPATH) -Forelease\ @<<
+	$<
+<<
 
 {release}.cpp{release\}.obj::
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -Forelease\ @<<
@@ -154,7 +174,7 @@ qmake: FORCE
 qmake_all: FORCE
 
 dist:
-	$(ZIP) utillityBills_Ver3.zip $(SOURCES) $(DIST) utillityBills_Ver3.pro C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\features\spec_pre.prf C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\common\angle.conf C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\features\win32\windows_vulkan_sdk.prf C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\common\windows-vulkan.conf C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\common\msvc-desktop.conf C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\qconfig.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_3danimation.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_3danimation_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_3dcore.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_3dcore_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_3dextras.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_3dextras_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_3dinput.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_3dinput_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_3dlogic.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_3dlogic_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_3dquick.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_3dquick_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_3dquickanimation.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_3dquickanimation_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_3dquickextras.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_3dquickextras_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_3dquickinput.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_3dquickinput_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_3dquickrender.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_3dquickrender_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_3dquickscene2d.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_3dquickscene2d_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_3drender.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_3drender_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_accessibility_support_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_axbase.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_axbase_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_axcontainer.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_axcontainer_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_axserver.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_axserver_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_bluetooth.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_bluetooth_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_bootstrap_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_concurrent.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_concurrent_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_core.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_core_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_dbus.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_dbus_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_designer.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_designer_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_designercomponents_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_devicediscovery_support_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_edid_support_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_egl_support_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_eventdispatcher_support_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_fb_support_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_fontdatabase_support_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_gamepad.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_gamepad_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_gui.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_gui_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_help.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_help_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_location.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_location_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_multimedia.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_multimedia_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_multimediawidgets.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_multimediawidgets_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_network.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_network_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_nfc.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_nfc_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_opengl.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_opengl_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_openglextensions.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_openglextensions_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_packetprotocol_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_platformcompositor_support_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_positioning.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_positioning_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_positioningquick.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_positioningquick_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_printsupport.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_printsupport_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_qml.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_qml_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_qmldebug_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_qmldevtools_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_qmltest.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_qmltest_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_qtmultimediaquicktools_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_quick.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_quick_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_quickcontrols2.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_quickcontrols2_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_quickparticles_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_quickshapes_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_quicktemplates2.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_quicktemplates2_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_quickwidgets.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_quickwidgets_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_remoteobjects.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_remoteobjects_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_repparser.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_repparser_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_scxml.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_scxml_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_sensors.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_sensors_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_serialbus.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_serialbus_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_serialport.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_serialport_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_sql.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_sql_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_svg.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_svg_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_testlib.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_testlib_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_texttospeech.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_texttospeech_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_theme_support_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_uiplugin.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_uitools.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_uitools_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_vulkan_support_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_webchannel.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_webchannel_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_websockets.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_websockets_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_webview.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_webview_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_widgets.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_widgets_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_windowsuiautomation_support_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_winextras.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_winextras_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_xml.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_xml_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_xmlpatterns.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_xmlpatterns_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_zlib_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\features\qt_functions.prf C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\features\qt_config.prf C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\win32-msvc\qmake.conf C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\features\spec_post.prf .qmake.stash C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\features\exclusive_builds.prf C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\common\msvc-version.conf C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\features\toolchain.prf C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\features\default_pre.prf C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\features\win32\default_pre.prf C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\features\resolve_config.prf C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\features\exclusive_builds_post.prf C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\features\default_post.prf C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\features\build_pass.prf C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\features\precompile_header.prf C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\features\warn_on.prf C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\features\qt.prf C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\features\resources.prf C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\features\moc.prf C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\features\win32\opengl.prf C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\features\qmake_use.prf C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\features\file_copies.prf C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\features\win32\windows.prf C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\features\testcase_targets.prf C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\features\exceptions.prf C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\features\yacc.prf C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\features\lex.prf utillityBills_Ver3.pro qml.qrc C:\my\Qt\5.12.12\5.12.12\msvc2017_64\lib\Qt5Quick.prl C:\my\Qt\5.12.12\5.12.12\msvc2017_64\lib\Qt5Gui.prl C:\my\Qt\5.12.12\5.12.12\msvc2017_64\lib\Qt5Qml.prl C:\my\Qt\5.12.12\5.12.12\msvc2017_64\lib\Qt5Network.prl C:\my\Qt\5.12.12\5.12.12\msvc2017_64\lib\Qt5Core.prl C:\my\Qt\5.12.12\5.12.12\msvc2017_64\lib\qtmain.prl   qml.qrc C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\features\data\dummy.cpp Model.h Common.h CmboxModel.h BillTypesModel.h ModelSummary.h bill.h  main.cpp Model.cpp Common.cpp CmboxModel.cpp BillTypesModel.cpp ModelSummary.cpp bill.cpp    
+	$(ZIP) utillityBills_Ver3.zip $(SOURCES) $(DIST) utillityBills_Ver3.pro C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\features\spec_pre.prf C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\common\angle.conf C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\features\win32\windows_vulkan_sdk.prf C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\common\windows-vulkan.conf C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\common\msvc-desktop.conf C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\qconfig.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_3danimation.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_3danimation_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_3dcore.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_3dcore_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_3dextras.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_3dextras_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_3dinput.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_3dinput_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_3dlogic.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_3dlogic_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_3dquick.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_3dquick_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_3dquickanimation.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_3dquickanimation_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_3dquickextras.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_3dquickextras_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_3dquickinput.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_3dquickinput_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_3dquickrender.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_3dquickrender_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_3dquickscene2d.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_3dquickscene2d_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_3drender.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_3drender_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_accessibility_support_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_axbase.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_axbase_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_axcontainer.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_axcontainer_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_axserver.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_axserver_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_bluetooth.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_bluetooth_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_bootstrap_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_concurrent.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_concurrent_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_core.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_core_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_dbus.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_dbus_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_designer.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_designer_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_designercomponents_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_devicediscovery_support_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_edid_support_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_egl_support_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_eventdispatcher_support_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_fb_support_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_fontdatabase_support_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_gamepad.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_gamepad_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_gui.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_gui_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_help.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_help_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_location.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_location_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_multimedia.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_multimedia_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_multimediawidgets.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_multimediawidgets_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_network.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_network_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_nfc.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_nfc_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_opengl.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_opengl_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_openglextensions.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_openglextensions_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_packetprotocol_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_platformcompositor_support_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_positioning.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_positioning_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_positioningquick.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_positioningquick_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_printsupport.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_printsupport_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_qml.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_qml_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_qmldebug_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_qmldevtools_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_qmltest.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_qmltest_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_qtmultimediaquicktools_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_quick.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_quick_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_quickcontrols2.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_quickcontrols2_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_quickparticles_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_quickshapes_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_quicktemplates2.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_quicktemplates2_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_quickwidgets.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_quickwidgets_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_remoteobjects.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_remoteobjects_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_repparser.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_repparser_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_scxml.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_scxml_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_sensors.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_sensors_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_serialbus.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_serialbus_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_serialport.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_serialport_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_sql.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_sql_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_svg.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_svg_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_testlib.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_testlib_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_texttospeech.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_texttospeech_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_theme_support_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_uiplugin.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_uitools.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_uitools_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_vulkan_support_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_webchannel.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_webchannel_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_websockets.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_websockets_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_webview.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_webview_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_widgets.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_widgets_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_windowsuiautomation_support_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_winextras.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_winextras_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_xml.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_xml_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_xmlpatterns.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_xmlpatterns_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\modules\qt_lib_zlib_private.pri C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\features\qt_functions.prf C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\features\qt_config.prf C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\win32-msvc\qmake.conf C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\features\spec_post.prf .qmake.stash C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\features\exclusive_builds.prf C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\common\msvc-version.conf C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\features\toolchain.prf C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\features\default_pre.prf C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\features\win32\default_pre.prf C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\features\resolve_config.prf C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\features\exclusive_builds_post.prf C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\features\default_post.prf C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\features\build_pass.prf C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\features\precompile_header.prf C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\features\warn_on.prf C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\features\qt.prf C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\features\resources.prf C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\features\moc.prf C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\features\win32\opengl.prf C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\features\qmake_use.prf C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\features\file_copies.prf C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\features\win32\windows.prf C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\features\testcase_targets.prf C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\features\exceptions.prf C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\features\yacc.prf C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\features\lex.prf utillityBills_Ver3.pro qml.qrc C:\my\Qt\5.12.12\5.12.12\msvc2017_64\lib\Qt5Quick.prl C:\my\Qt\5.12.12\5.12.12\msvc2017_64\lib\Qt5Gui.prl C:\my\Qt\5.12.12\5.12.12\msvc2017_64\lib\Qt5Qml.prl C:\my\Qt\5.12.12\5.12.12\msvc2017_64\lib\Qt5Network.prl C:\my\Qt\5.12.12\5.12.12\msvc2017_64\lib\Qt5Core.prl C:\my\Qt\5.12.12\5.12.12\msvc2017_64\lib\qtmain.prl   qml.qrc C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\features\data\dummy.cpp src\Model.h src\Common.h src\CmboxModel.h src\BillTypesModel.h src\ModelSummary.h src\bill.h  src\main.cpp src\Model.cpp src\Common.cpp src\CmboxModel.cpp src\BillTypesModel.cpp src\ModelSummary.cpp src\bill.cpp    
 
 clean: compiler_clean 
 	-$(DEL_FILE) release\main.obj release\Model.obj release\Common.obj release\CmboxModel.obj release\BillTypesModel.obj release\ModelSummary.obj release\bill.obj release\qrc_qml.obj release\moc_Model.obj release\moc_Common.obj release\moc_CmboxModel.obj release\moc_BillTypesModel.obj release\moc_ModelSummary.obj
@@ -180,24 +200,26 @@ compiler_rcc_clean:
 	-$(DEL_FILE) release\qrc_qml.cpp
 release\qrc_qml.cpp: qml.qrc \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\bin\rcc.exe \
-		closeIcon.png \
-		DialogAreYouSure.qml \
-		Style.qml \
-		ImageButton.qml \
-		totalCost.png \
-		DialogDetailedPrice.qml \
-		clearIcon.png \
-		PageTotal.qml \
-		PopupEditDelete.qml \
-		MonthPicker.qml \
-		TotalCostItem.qml \
-		TextStretchable.qml \
-		DelegateTableItem.qml \
-		DialogNameEdit.qml \
-		save.png \
-		main.qml \
-		ButtonSmall.qml \
-		TextFieldDelegate.qml
+		qml\ButtonSmall.qml \
+		qml\MonthPicker.qml \
+		qml\TotalCostItem.qml \
+		qml\DialogAreYouSure.qml \
+		qml\PageTotal.qml \
+		qml\DelegateTableItem.qml \
+		qml\Style.qml \
+		qml\DialogDetailedPrice.qml \
+		qml\ImageButton.qml \
+		qml\PopupEditDelete.qml \
+		qml\TextStretchable.qml \
+		qml\DialogNameEdit.qml \
+		qml\TextFieldDelegate.qml \
+		qml\main.qml \
+		img\save.png \
+		img\clearIcon.png \
+		img\monthColors.png \
+		img\totalCost.png \
+		img\appIcon.png \
+		img\closeIcon.png
 	C:\my\Qt\5.12.12\5.12.12\msvc2017_64\bin\rcc.exe -name qml qml.qrc -o release\qrc_qml.cpp
 
 compiler_moc_predefs_make_all: release\moc_predefs.h
@@ -209,7 +231,7 @@ release\moc_predefs.h: C:\my\Qt\5.12.12\5.12.12\msvc2017_64\mkspecs\features\dat
 compiler_moc_header_make_all: release\moc_Model.cpp release\moc_Common.cpp release\moc_CmboxModel.cpp release\moc_BillTypesModel.cpp release\moc_ModelSummary.cpp
 compiler_moc_header_clean:
 	-$(DEL_FILE) release\moc_Model.cpp release\moc_Common.cpp release\moc_CmboxModel.cpp release\moc_BillTypesModel.cpp release\moc_ModelSummary.cpp
-release\moc_Model.cpp: Model.h \
+release\moc_Model.cpp: src\Model.h \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\QObject \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\qobject.h \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\qobjectdefs.h \
@@ -279,14 +301,14 @@ release\moc_Model.cpp: Model.h \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\qsharedpointer_impl.h \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\QStandardPaths \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\qstandardpaths.h \
-		bill.h \
+		src\bill.h \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\QDate \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\qdatetime.h \
 		release\moc_predefs.h \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\bin\moc.exe
-	C:\my\Qt\5.12.12\5.12.12\msvc2017_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include V:/0010/MyResume/GithubPro/utillityBills/release/moc_predefs.h -IC:/my/Qt/5.12.12/5.12.12/msvc2017_64/mkspecs/win32-msvc -IV:/0010/MyResume/GithubPro/utillityBills -IC:/my/Qt/5.12.12/5.12.12/msvc2017_64/include -IC:/my/Qt/5.12.12/5.12.12/msvc2017_64/include/QtQuick -IC:/my/Qt/5.12.12/5.12.12/msvc2017_64/include/QtGui -IC:/my/Qt/5.12.12/5.12.12/msvc2017_64/include/QtANGLE -IC:/my/Qt/5.12.12/5.12.12/msvc2017_64/include/QtQml -IC:/my/Qt/5.12.12/5.12.12/msvc2017_64/include/QtNetwork -IC:/my/Qt/5.12.12/5.12.12/msvc2017_64/include/QtCore -I"C:\my\Visual Studio\VC\Tools\MSVC\14.29.30133\include" -I"C:\Windows Kits\10\include\10.0.19041.0\ucrt" -I"C:\Windows Kits\10\include\10.0.19041.0\shared" -I"C:\Windows Kits\10\include\10.0.19041.0\um" -I"C:\Windows Kits\10\include\10.0.19041.0\winrt" -I"C:\Windows Kits\10\include\10.0.19041.0\cppwinrt" Model.h -o release\moc_Model.cpp
+	C:\my\Qt\5.12.12\5.12.12\msvc2017_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include V:/0010/MyResume/GithubPro/utillityBills/release/moc_predefs.h -IC:/my/Qt/5.12.12/5.12.12/msvc2017_64/mkspecs/win32-msvc -IV:/0010/MyResume/GithubPro/utillityBills -IC:/my/Qt/5.12.12/5.12.12/msvc2017_64/include -IC:/my/Qt/5.12.12/5.12.12/msvc2017_64/include/QtQuick -IC:/my/Qt/5.12.12/5.12.12/msvc2017_64/include/QtGui -IC:/my/Qt/5.12.12/5.12.12/msvc2017_64/include/QtANGLE -IC:/my/Qt/5.12.12/5.12.12/msvc2017_64/include/QtQml -IC:/my/Qt/5.12.12/5.12.12/msvc2017_64/include/QtNetwork -IC:/my/Qt/5.12.12/5.12.12/msvc2017_64/include/QtCore -I"C:\my\Visual Studio\VC\Tools\MSVC\14.29.30133\include" -I"C:\Windows Kits\10\include\10.0.19041.0\ucrt" -I"C:\Windows Kits\10\include\10.0.19041.0\shared" -I"C:\Windows Kits\10\include\10.0.19041.0\um" -I"C:\Windows Kits\10\include\10.0.19041.0\winrt" -I"C:\Windows Kits\10\include\10.0.19041.0\cppwinrt" src\Model.h -o release\moc_Model.cpp
 
-release\moc_Common.cpp: Common.h \
+release\moc_Common.cpp: src\Common.h \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\QObject \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\qobject.h \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\qobjectdefs.h \
@@ -339,7 +361,7 @@ release\moc_Common.cpp: Common.h \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\qobject_impl.h \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\QStandardPaths \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\qstandardpaths.h \
-		Model.h \
+		src\Model.h \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\QString \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\QAbstractTableModel \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\qabstractitemmodel.h \
@@ -357,10 +379,10 @@ release\moc_Common.cpp: Common.h \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\qcontiguouscache.h \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\qsharedpointer.h \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\qsharedpointer_impl.h \
-		bill.h \
+		src\bill.h \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\QDate \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\qdatetime.h \
-		CmboxModel.h \
+		src\CmboxModel.h \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtQml\QQmlEngine \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtQml\qqmlengine.h \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\qurl.h \
@@ -382,9 +404,9 @@ release\moc_Common.cpp: Common.h \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\QPoint \
 		release\moc_predefs.h \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\bin\moc.exe
-	C:\my\Qt\5.12.12\5.12.12\msvc2017_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include V:/0010/MyResume/GithubPro/utillityBills/release/moc_predefs.h -IC:/my/Qt/5.12.12/5.12.12/msvc2017_64/mkspecs/win32-msvc -IV:/0010/MyResume/GithubPro/utillityBills -IC:/my/Qt/5.12.12/5.12.12/msvc2017_64/include -IC:/my/Qt/5.12.12/5.12.12/msvc2017_64/include/QtQuick -IC:/my/Qt/5.12.12/5.12.12/msvc2017_64/include/QtGui -IC:/my/Qt/5.12.12/5.12.12/msvc2017_64/include/QtANGLE -IC:/my/Qt/5.12.12/5.12.12/msvc2017_64/include/QtQml -IC:/my/Qt/5.12.12/5.12.12/msvc2017_64/include/QtNetwork -IC:/my/Qt/5.12.12/5.12.12/msvc2017_64/include/QtCore -I"C:\my\Visual Studio\VC\Tools\MSVC\14.29.30133\include" -I"C:\Windows Kits\10\include\10.0.19041.0\ucrt" -I"C:\Windows Kits\10\include\10.0.19041.0\shared" -I"C:\Windows Kits\10\include\10.0.19041.0\um" -I"C:\Windows Kits\10\include\10.0.19041.0\winrt" -I"C:\Windows Kits\10\include\10.0.19041.0\cppwinrt" Common.h -o release\moc_Common.cpp
+	C:\my\Qt\5.12.12\5.12.12\msvc2017_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include V:/0010/MyResume/GithubPro/utillityBills/release/moc_predefs.h -IC:/my/Qt/5.12.12/5.12.12/msvc2017_64/mkspecs/win32-msvc -IV:/0010/MyResume/GithubPro/utillityBills -IC:/my/Qt/5.12.12/5.12.12/msvc2017_64/include -IC:/my/Qt/5.12.12/5.12.12/msvc2017_64/include/QtQuick -IC:/my/Qt/5.12.12/5.12.12/msvc2017_64/include/QtGui -IC:/my/Qt/5.12.12/5.12.12/msvc2017_64/include/QtANGLE -IC:/my/Qt/5.12.12/5.12.12/msvc2017_64/include/QtQml -IC:/my/Qt/5.12.12/5.12.12/msvc2017_64/include/QtNetwork -IC:/my/Qt/5.12.12/5.12.12/msvc2017_64/include/QtCore -I"C:\my\Visual Studio\VC\Tools\MSVC\14.29.30133\include" -I"C:\Windows Kits\10\include\10.0.19041.0\ucrt" -I"C:\Windows Kits\10\include\10.0.19041.0\shared" -I"C:\Windows Kits\10\include\10.0.19041.0\um" -I"C:\Windows Kits\10\include\10.0.19041.0\winrt" -I"C:\Windows Kits\10\include\10.0.19041.0\cppwinrt" src\Common.h -o release\moc_Common.cpp
 
-release\moc_CmboxModel.cpp: CmboxModel.h \
+release\moc_CmboxModel.cpp: src\CmboxModel.h \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\QAbstractTableModel \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\qabstractitemmodel.h \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\qvariant.h \
@@ -453,9 +475,9 @@ release\moc_CmboxModel.cpp: CmboxModel.h \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\QObject \
 		release\moc_predefs.h \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\bin\moc.exe
-	C:\my\Qt\5.12.12\5.12.12\msvc2017_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include V:/0010/MyResume/GithubPro/utillityBills/release/moc_predefs.h -IC:/my/Qt/5.12.12/5.12.12/msvc2017_64/mkspecs/win32-msvc -IV:/0010/MyResume/GithubPro/utillityBills -IC:/my/Qt/5.12.12/5.12.12/msvc2017_64/include -IC:/my/Qt/5.12.12/5.12.12/msvc2017_64/include/QtQuick -IC:/my/Qt/5.12.12/5.12.12/msvc2017_64/include/QtGui -IC:/my/Qt/5.12.12/5.12.12/msvc2017_64/include/QtANGLE -IC:/my/Qt/5.12.12/5.12.12/msvc2017_64/include/QtQml -IC:/my/Qt/5.12.12/5.12.12/msvc2017_64/include/QtNetwork -IC:/my/Qt/5.12.12/5.12.12/msvc2017_64/include/QtCore -I"C:\my\Visual Studio\VC\Tools\MSVC\14.29.30133\include" -I"C:\Windows Kits\10\include\10.0.19041.0\ucrt" -I"C:\Windows Kits\10\include\10.0.19041.0\shared" -I"C:\Windows Kits\10\include\10.0.19041.0\um" -I"C:\Windows Kits\10\include\10.0.19041.0\winrt" -I"C:\Windows Kits\10\include\10.0.19041.0\cppwinrt" CmboxModel.h -o release\moc_CmboxModel.cpp
+	C:\my\Qt\5.12.12\5.12.12\msvc2017_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include V:/0010/MyResume/GithubPro/utillityBills/release/moc_predefs.h -IC:/my/Qt/5.12.12/5.12.12/msvc2017_64/mkspecs/win32-msvc -IV:/0010/MyResume/GithubPro/utillityBills -IC:/my/Qt/5.12.12/5.12.12/msvc2017_64/include -IC:/my/Qt/5.12.12/5.12.12/msvc2017_64/include/QtQuick -IC:/my/Qt/5.12.12/5.12.12/msvc2017_64/include/QtGui -IC:/my/Qt/5.12.12/5.12.12/msvc2017_64/include/QtANGLE -IC:/my/Qt/5.12.12/5.12.12/msvc2017_64/include/QtQml -IC:/my/Qt/5.12.12/5.12.12/msvc2017_64/include/QtNetwork -IC:/my/Qt/5.12.12/5.12.12/msvc2017_64/include/QtCore -I"C:\my\Visual Studio\VC\Tools\MSVC\14.29.30133\include" -I"C:\Windows Kits\10\include\10.0.19041.0\ucrt" -I"C:\Windows Kits\10\include\10.0.19041.0\shared" -I"C:\Windows Kits\10\include\10.0.19041.0\um" -I"C:\Windows Kits\10\include\10.0.19041.0\winrt" -I"C:\Windows Kits\10\include\10.0.19041.0\cppwinrt" src\CmboxModel.h -o release\moc_CmboxModel.cpp
 
-release\moc_BillTypesModel.cpp: BillTypesModel.h \
+release\moc_BillTypesModel.cpp: src\BillTypesModel.h \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\QObject \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\qobject.h \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\qobjectdefs.h \
@@ -522,16 +544,16 @@ release\moc_BillTypesModel.cpp: BillTypesModel.h \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\qcontiguouscache.h \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\qsharedpointer.h \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\qsharedpointer_impl.h \
-		Common.h \
+		src\Common.h \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\QStandardPaths \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\qstandardpaths.h \
-		Model.h \
+		src\Model.h \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\QString \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\QAbstractTableModel \
-		bill.h \
+		src\bill.h \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\QDate \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\qdatetime.h \
-		CmboxModel.h \
+		src\CmboxModel.h \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtQml\QQmlEngine \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtQml\qqmlengine.h \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\qurl.h \
@@ -553,9 +575,9 @@ release\moc_BillTypesModel.cpp: BillTypesModel.h \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\QPoint \
 		release\moc_predefs.h \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\bin\moc.exe
-	C:\my\Qt\5.12.12\5.12.12\msvc2017_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include V:/0010/MyResume/GithubPro/utillityBills/release/moc_predefs.h -IC:/my/Qt/5.12.12/5.12.12/msvc2017_64/mkspecs/win32-msvc -IV:/0010/MyResume/GithubPro/utillityBills -IC:/my/Qt/5.12.12/5.12.12/msvc2017_64/include -IC:/my/Qt/5.12.12/5.12.12/msvc2017_64/include/QtQuick -IC:/my/Qt/5.12.12/5.12.12/msvc2017_64/include/QtGui -IC:/my/Qt/5.12.12/5.12.12/msvc2017_64/include/QtANGLE -IC:/my/Qt/5.12.12/5.12.12/msvc2017_64/include/QtQml -IC:/my/Qt/5.12.12/5.12.12/msvc2017_64/include/QtNetwork -IC:/my/Qt/5.12.12/5.12.12/msvc2017_64/include/QtCore -I"C:\my\Visual Studio\VC\Tools\MSVC\14.29.30133\include" -I"C:\Windows Kits\10\include\10.0.19041.0\ucrt" -I"C:\Windows Kits\10\include\10.0.19041.0\shared" -I"C:\Windows Kits\10\include\10.0.19041.0\um" -I"C:\Windows Kits\10\include\10.0.19041.0\winrt" -I"C:\Windows Kits\10\include\10.0.19041.0\cppwinrt" BillTypesModel.h -o release\moc_BillTypesModel.cpp
+	C:\my\Qt\5.12.12\5.12.12\msvc2017_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include V:/0010/MyResume/GithubPro/utillityBills/release/moc_predefs.h -IC:/my/Qt/5.12.12/5.12.12/msvc2017_64/mkspecs/win32-msvc -IV:/0010/MyResume/GithubPro/utillityBills -IC:/my/Qt/5.12.12/5.12.12/msvc2017_64/include -IC:/my/Qt/5.12.12/5.12.12/msvc2017_64/include/QtQuick -IC:/my/Qt/5.12.12/5.12.12/msvc2017_64/include/QtGui -IC:/my/Qt/5.12.12/5.12.12/msvc2017_64/include/QtANGLE -IC:/my/Qt/5.12.12/5.12.12/msvc2017_64/include/QtQml -IC:/my/Qt/5.12.12/5.12.12/msvc2017_64/include/QtNetwork -IC:/my/Qt/5.12.12/5.12.12/msvc2017_64/include/QtCore -I"C:\my\Visual Studio\VC\Tools\MSVC\14.29.30133\include" -I"C:\Windows Kits\10\include\10.0.19041.0\ucrt" -I"C:\Windows Kits\10\include\10.0.19041.0\shared" -I"C:\Windows Kits\10\include\10.0.19041.0\um" -I"C:\Windows Kits\10\include\10.0.19041.0\winrt" -I"C:\Windows Kits\10\include\10.0.19041.0\cppwinrt" src\BillTypesModel.h -o release\moc_BillTypesModel.cpp
 
-release\moc_ModelSummary.cpp: ModelSummary.h \
+release\moc_ModelSummary.cpp: src\ModelSummary.h \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\QObject \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\qobject.h \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\qobjectdefs.h \
@@ -623,14 +645,14 @@ release\moc_ModelSummary.cpp: ModelSummary.h \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\qcontiguouscache.h \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\qsharedpointer.h \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\qsharedpointer_impl.h \
-		Common.h \
+		src\Common.h \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\QStandardPaths \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\qstandardpaths.h \
-		Model.h \
-		bill.h \
+		src\Model.h \
+		src\bill.h \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\QDate \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\qdatetime.h \
-		CmboxModel.h \
+		src\CmboxModel.h \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtQml\QQmlEngine \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtQml\qqmlengine.h \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\qurl.h \
@@ -652,7 +674,7 @@ release\moc_ModelSummary.cpp: ModelSummary.h \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\QPoint \
 		release\moc_predefs.h \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\bin\moc.exe
-	C:\my\Qt\5.12.12\5.12.12\msvc2017_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include V:/0010/MyResume/GithubPro/utillityBills/release/moc_predefs.h -IC:/my/Qt/5.12.12/5.12.12/msvc2017_64/mkspecs/win32-msvc -IV:/0010/MyResume/GithubPro/utillityBills -IC:/my/Qt/5.12.12/5.12.12/msvc2017_64/include -IC:/my/Qt/5.12.12/5.12.12/msvc2017_64/include/QtQuick -IC:/my/Qt/5.12.12/5.12.12/msvc2017_64/include/QtGui -IC:/my/Qt/5.12.12/5.12.12/msvc2017_64/include/QtANGLE -IC:/my/Qt/5.12.12/5.12.12/msvc2017_64/include/QtQml -IC:/my/Qt/5.12.12/5.12.12/msvc2017_64/include/QtNetwork -IC:/my/Qt/5.12.12/5.12.12/msvc2017_64/include/QtCore -I"C:\my\Visual Studio\VC\Tools\MSVC\14.29.30133\include" -I"C:\Windows Kits\10\include\10.0.19041.0\ucrt" -I"C:\Windows Kits\10\include\10.0.19041.0\shared" -I"C:\Windows Kits\10\include\10.0.19041.0\um" -I"C:\Windows Kits\10\include\10.0.19041.0\winrt" -I"C:\Windows Kits\10\include\10.0.19041.0\cppwinrt" ModelSummary.h -o release\moc_ModelSummary.cpp
+	C:\my\Qt\5.12.12\5.12.12\msvc2017_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include V:/0010/MyResume/GithubPro/utillityBills/release/moc_predefs.h -IC:/my/Qt/5.12.12/5.12.12/msvc2017_64/mkspecs/win32-msvc -IV:/0010/MyResume/GithubPro/utillityBills -IC:/my/Qt/5.12.12/5.12.12/msvc2017_64/include -IC:/my/Qt/5.12.12/5.12.12/msvc2017_64/include/QtQuick -IC:/my/Qt/5.12.12/5.12.12/msvc2017_64/include/QtGui -IC:/my/Qt/5.12.12/5.12.12/msvc2017_64/include/QtANGLE -IC:/my/Qt/5.12.12/5.12.12/msvc2017_64/include/QtQml -IC:/my/Qt/5.12.12/5.12.12/msvc2017_64/include/QtNetwork -IC:/my/Qt/5.12.12/5.12.12/msvc2017_64/include/QtCore -I"C:\my\Visual Studio\VC\Tools\MSVC\14.29.30133\include" -I"C:\Windows Kits\10\include\10.0.19041.0\ucrt" -I"C:\Windows Kits\10\include\10.0.19041.0\shared" -I"C:\Windows Kits\10\include\10.0.19041.0\um" -I"C:\Windows Kits\10\include\10.0.19041.0\winrt" -I"C:\Windows Kits\10\include\10.0.19041.0\cppwinrt" src\ModelSummary.h -o release\moc_ModelSummary.cpp
 
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
@@ -670,7 +692,7 @@ compiler_clean: compiler_rcc_clean compiler_moc_predefs_clean compiler_moc_heade
 
 ####### Compile
 
-release\main.obj: main.cpp C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtGui\QGuiApplication \
+release\main.obj: src\main.cpp C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtGui\QGuiApplication \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtGui\qguiapplication.h \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtGui\qtguiglobal.h \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\qglobal.h \
@@ -762,27 +784,27 @@ release\main.obj: main.cpp C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtGui\QG
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtQml\qqmllist.h \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\qmetaobject.h \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtQml\qqmlerror.h \
-		Common.h \
+		src\Common.h \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\QObject \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\QStandardPaths \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\qstandardpaths.h \
-		Model.h \
+		src\Model.h \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\QString \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\QAbstractTableModel \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\qabstractitemmodel.h \
-		bill.h \
+		src\bill.h \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\QDate \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\qdatetime.h \
-		CmboxModel.h \
+		src\CmboxModel.h \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtQml\QQmlEngine \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\QPoint \
-		BillTypesModel.h \
+		src\BillTypesModel.h \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\QAbstractListModel \
-		ModelSummary.h \
+		src\ModelSummary.h \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtQml\QQmlContext \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtQml\qqmlcontext.h
 
-release\Model.obj: Model.cpp Model.h \
+release\Model.obj: src\Model.cpp src\Model.h \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\QObject \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\qobject.h \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\qobjectdefs.h \
@@ -852,7 +874,7 @@ release\Model.obj: Model.cpp Model.h \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\qsharedpointer_impl.h \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\QStandardPaths \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\qstandardpaths.h \
-		bill.h \
+		src\bill.h \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\QDate \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\qdatetime.h \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\QDir \
@@ -861,8 +883,8 @@ release\Model.obj: Model.cpp Model.h \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\qfile.h \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\qfiledevice.h \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\QTextStream \
-		Common.h \
-		CmboxModel.h \
+		src\Common.h \
+		src\CmboxModel.h \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtQml\QQmlEngine \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtQml\qqmlengine.h \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\qurl.h \
@@ -884,7 +906,7 @@ release\Model.obj: Model.cpp Model.h \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\QPoint \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\QDebug
 
-release\Common.obj: Common.cpp Common.h \
+release\Common.obj: src\Common.cpp src\Common.h \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\QObject \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\qobject.h \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\qobjectdefs.h \
@@ -937,7 +959,7 @@ release\Common.obj: Common.cpp Common.h \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\qobject_impl.h \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\QStandardPaths \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\qstandardpaths.h \
-		Model.h \
+		src\Model.h \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\QString \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\QAbstractTableModel \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\qabstractitemmodel.h \
@@ -955,10 +977,10 @@ release\Common.obj: Common.cpp Common.h \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\qcontiguouscache.h \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\qsharedpointer.h \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\qsharedpointer_impl.h \
-		bill.h \
+		src\bill.h \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\QDate \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\qdatetime.h \
-		CmboxModel.h \
+		src\CmboxModel.h \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtQml\QQmlEngine \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtQml\qqmlengine.h \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\qurl.h \
@@ -986,11 +1008,11 @@ release\Common.obj: Common.cpp Common.h \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\QTextStream \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\QSettings \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\qsettings.h \
-		BillTypesModel.h \
+		src\BillTypesModel.h \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\QAbstractListModel \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\QDebug
 
-release\CmboxModel.obj: CmboxModel.cpp CmboxModel.h \
+release\CmboxModel.obj: src\CmboxModel.cpp src\CmboxModel.h \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\QAbstractTableModel \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\qabstractitemmodel.h \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\qvariant.h \
@@ -1064,12 +1086,12 @@ release\CmboxModel.obj: CmboxModel.cpp CmboxModel.h \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\qdir.h \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\qfileinfo.h \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\QTextStream \
-		Common.h \
+		src\Common.h \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\QStandardPaths \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\qstandardpaths.h \
-		Model.h \
+		src\Model.h \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\QString \
-		bill.h \
+		src\bill.h \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\QDate \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\qdatetime.h \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtQml\QQmlEngine \
@@ -1091,11 +1113,11 @@ release\CmboxModel.obj: CmboxModel.cpp CmboxModel.h \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\qmetaobject.h \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtQml\qqmlerror.h \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\QPoint \
-		BillTypesModel.h \
+		src\BillTypesModel.h \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\QAbstractListModel \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\QtDebug
 
-release\BillTypesModel.obj: BillTypesModel.cpp BillTypesModel.h \
+release\BillTypesModel.obj: src\BillTypesModel.cpp src\BillTypesModel.h \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\QObject \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\qobject.h \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\qobjectdefs.h \
@@ -1162,16 +1184,16 @@ release\BillTypesModel.obj: BillTypesModel.cpp BillTypesModel.h \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\qcontiguouscache.h \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\qsharedpointer.h \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\qsharedpointer_impl.h \
-		Common.h \
+		src\Common.h \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\QStandardPaths \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\qstandardpaths.h \
-		Model.h \
+		src\Model.h \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\QString \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\QAbstractTableModel \
-		bill.h \
+		src\bill.h \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\QDate \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\qdatetime.h \
-		CmboxModel.h \
+		src\CmboxModel.h \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtQml\QQmlEngine \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtQml\qqmlengine.h \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\qurl.h \
@@ -1197,7 +1219,7 @@ release\BillTypesModel.obj: BillTypesModel.cpp BillTypesModel.h \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\QTextStream \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\QDebug
 
-release\ModelSummary.obj: ModelSummary.cpp ModelSummary.h \
+release\ModelSummary.obj: src\ModelSummary.cpp src\ModelSummary.h \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\QObject \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\qobject.h \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\qobjectdefs.h \
@@ -1265,14 +1287,14 @@ release\ModelSummary.obj: ModelSummary.cpp ModelSummary.h \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\qcontiguouscache.h \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\qsharedpointer.h \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\qsharedpointer_impl.h \
-		Common.h \
+		src\Common.h \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\QStandardPaths \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\qstandardpaths.h \
-		Model.h \
-		bill.h \
+		src\Model.h \
+		src\bill.h \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\QDate \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\qdatetime.h \
-		CmboxModel.h \
+		src\CmboxModel.h \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtQml\QQmlEngine \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtQml\qqmlengine.h \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\qurl.h \
@@ -1294,7 +1316,7 @@ release\ModelSummary.obj: ModelSummary.cpp ModelSummary.h \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\QPoint \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\QtDebug
 
-release\bill.obj: bill.cpp bill.h \
+release\bill.obj: src\bill.cpp src\bill.h \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\QDate \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\qdatetime.h \
 		C:\my\Qt\5.12.12\5.12.12\msvc2017_64\include\QtCore\qstring.h \

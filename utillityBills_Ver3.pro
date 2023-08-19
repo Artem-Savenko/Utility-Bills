@@ -9,13 +9,13 @@ CONFIG += c++11
 DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
-        main.cpp \
-    Model.cpp \
-    Common.cpp \
-    CmboxModel.cpp \
-    BillTypesModel.cpp \
-    ModelSummary.cpp \
-    bill.cpp
+        src/main.cpp \
+        src/Model.cpp \
+        src/Common.cpp \
+        src/CmboxModel.cpp \
+        src/BillTypesModel.cpp \
+        src/ModelSummary.cpp \
+        src/bill.cpp
 
 RESOURCES += qml.qrc
 
@@ -24,11 +24,11 @@ qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
-RC_ICONS += appIcon.ico
+RC_ICONS += img/appIcon.ico
 
-HEADERS += Model.h \
-    Common.h \
-    CmboxModel.h \
-    BillTypesModel.h \
-    ModelSummary.h \
-    bill.h
+HEADERS += src/Model.h \
+           src/Common.h \
+           src/CmboxModel.h \
+           src/BillTypesModel.h \
+           src/ModelSummary.h \
+           src/bill.h
