@@ -15,6 +15,8 @@ class Bill
     int mUnits;             // price details
     static QStringList mHeaderNames;
 
+    static const QString& numToMonthStr(int monthNum);
+
 public:
     explicit Bill();
 

@@ -38,6 +38,27 @@ void Bill::setUnits(int units)
     mUnits = units;
 }
 
+const QString &Bill::numToMonthStr(int monthNum)
+{
+    static QStringList monthNames = QStringList() << "January"
+                                                  << "February"
+                                                  << "March"
+                                                  << "April"
+                                                  << "May"
+                                                  << "June"
+                                                  << "July"
+                                                  << "August"
+                                                  << "September"
+                                                  << "October"
+                                                  << "November"
+                                                  << "December"
+                                                  << "ERROR";
+
+    if(monthNum <= 0 || monthNum > 12)
+        return monthNames.back();
+    return monthNames.at(monthNum -1);
+}
+
 Bill::Bill()
     : mBeginOfMonth(0),
       mEndOfMonth(0),
@@ -66,7 +87,8 @@ QString Bill::endOfMonthStr() const
 void Bill::setMonth(const int &month, const int &year)
 {
     QDate newMonth(year, month, 1);
-    mMonth = newMonth.toString(" [MM.yyyy]    MMMM");
+    mMonth = newMonth.toString(" [MM.yyyy]    ");
+    mMonth.append(numToMonthStr(month));
 }
 
 void Bill::setMonthStr(const QString &monthStr)
